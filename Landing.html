@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hélder Kiss King | Site Oficial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap');
+        
+        :root {
+            --neon-red: #ff073a;
+            --neon-blue: #0ff0fc;
+            --dark-bg: #0a0a0a;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .artist-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 7, 58, 0.3);
+        }
+        
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid var(--neon-red);
+            box-shadow: 0 0 15px var(--neon-red);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--neon-red);
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: 0.2em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+        }
+        
+        .album-cover {
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .album-cover:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px var(--neon-red);
+        }
+        
+        .bio-text {
+            position: relative;
+        }
+        
+        .bio-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 90%, rgba(255, 255, 255, 0.1) 100%);
+            animation: glitch 2s infinite alternate;
+        }
+        
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        .newsletter-bg {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-bottom: 2px solid var(--neon-red);
+            color: white;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 7, 58, 0.4);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .social-icon:hover {
+            color: var(--neon-red);
+            transform: translateY(-3px);
+        }
+        
+        .tour-date {
+            border-left: 3px solid var(--neon-red);
+            transition: all 0.3s ease;
+        }
+        
+        .tour-date:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .concrete-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+        }
+        
+        .footer {
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center relative">
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="artist-name mb-6">Hélder Kiss King</h1>
+            <p class="text-xl md:text-2xl mb-12 uppercase tracking-widest font-light">A voz das ruas</p>
+            <a href="#music" class="play-btn flex items-center justify-center mx-auto">
+                <i class="fas fa-play text-2xl text-white"></i>
+            </a>
+            <div class="absolute bottom-10 left-0 right-0 text-center">
+                <a href="#about" class="animate-bounce inline-block">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Releases -->
+    <section id="music" class="py-20 px-6 concrete-bg">
+        <div class="container mx-auto">
+            <h2 class="section-title mb-16">Últimos Lançamentos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+                <div class="album-cover rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Album Cover" class="w-full h-auto">
+                    <div class="p-4 bg-black bg-opacity-70">
+                        <h3 class="text-xl font-bold">VARIATIONS</h3>
+                        <p class="text-gray-400">Mixtape • 2023</p>
+                    </div>
+                </div>
+                <div class="album-cover rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Album Cover" class="w-full h-auto">
+                    <div class="p-4 bg-black bg-opacity-70">
+                        <h3 class="text-xl font-bold">KING'S RANSOM</h3>
+                        <p class="text-gray-400">Single • 2023</p>
+                    </div>
+                </div>
+                
+                <div class="album-cover rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Album Cover" class="w-full h-auto">
+                    <div class="p-4 bg-black bg-opacity-70">
+                        <h3 class="text-xl font-bold">STREET POETRY</h3>
+                        <p class="text-gray-400">EP • 2022</p>
+                    </div>
+                </div>
+                
+                <div class="album-cover rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Album Cover" class="w-full h-auto">
+                    <div class="p-4 bg-black bg-opacity-70">
+                        <h3 class="text-xl font-bold">CONCRETE DREAMS</h3>
+                        <p class="text-gray-400">Album • 2021</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Spotify Embed -->
+            <div class="max-w-4xl mx-auto bg-black bg-opacity-50 p-6 rounded-lg">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0c3dWaaH70WtRncl6APt1x?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="section-title mb-16">Sobre</h2>
+            
+            <div class="bio-text mb-16">
+                <p class="text-lg leading-relaxed mb-6">
+                    Hélder Kiss King, nascido no coração da selva urbana, emergiu das ruas de concreto com uma voz que ecoa a verdade crua da vida na cidade. Suas letras pintam quadros vívidos de luta, triunfo e a busca incansável por sonhos contra todas as probabilidades.
+                </p>
+                <p class="text-lg leading-relaxed mb-6">
+                    Com influências que vão do hip-hop old school ao trap contemporâneo, o som de Hélder é uma fusão única que conecta gerações. Seu flow é afiado e melodicamente rico, entregando versos que cortam fundo enquanto mantêm apelo mainstream.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    De batalhas underground a hits no topo das paradas, Hélder Kiss King consolidou seu lugar como uma das vozes mais autênticas do rap moderno. Sua música não apenas entretém - conta histórias, inspira movimentos e dá voz aos sem voz.
+                </p>
+            </div>
+            
+            <div class="flex justify-center space-x-8 mb-16">
+                <a href="#" class="social-icon text-2xl"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon text-2xl"><i class="fab fa-spotify"></i></a>
+                <a href="#" class="social-icon text-2xl"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon text-2xl"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon text-2xl"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 px-6 concrete-bg">
+        <div class="container mx-auto max-w-2xl">
+            <div class="newsletter-bg rounded-lg p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6 text-center">Junte-se ao Movimento</h2>
+                <p class="text-center mb-8">Fique atualizado com lançamentos exclusivos, datas de turnê e conteúdo dos bastidores.</p>
+                
+                <form class="space-y-4">
+                    <div>
+                        <input type="email" placeholder="Your Email" class="input-field w-full px-4 py-3 rounded">
+                    </div>
+                    <button type="submit" class="submit-btn w-full py-3 rounded font-bold uppercase">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Dates -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="section-title mb-16">Datas de Tour</h2>
+            
+            <div class="space-y-4">
+                <div class="tour-date p-4 pl-6">
+                    <div class="flex flex-col md:flex-row md:justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl">Lisbon Nights</h3>
+                            <p class="text-gray-400">Coliseu dos Recreios</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p>June 15, 2023</p>
+                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour-date p-4 pl-6">
+                    <div class="flex flex-col md:flex-row md:justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl">Porto Underground</h3>
+                            <p class="text-gray-400">Hard Club</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p>July 3, 2023</p>
+                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour-date p-4 pl-6">
+                    <div class="flex flex-col md:flex-row md:justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl">Madrid Beats</h3>
+                            <p class="text-gray-400">Sala But</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p>August 12, 2023</p>
+                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="artist-name text-4xl">Hélder Kiss King</h2>
+                    <p class="mt-2 text-gray-400">© 2023 Todos os direitos reservados</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-lg">Para reservas e informações:</p>
+                    <a href="mailto:management@helderkissking.com" class="text-red-500 hover:text-red-400">management@helderkissking.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple animation for hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition < hero.offsetHeight) {
+                hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+            }
+        });
+        
+        // Glitch effect for bio text
+        const bioText = document.querySelector('.bio-text');
+        
+        setInterval(() => {
+            bioText.style.textShadow = `0 0 ${Math.random() * 5}px rgba(255, 7, 58, ${Math.random() * 0.5})`;
+        }, 100);
+    </script>
+</body>
+</html>
