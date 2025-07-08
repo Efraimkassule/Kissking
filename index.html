@@ -5,398 +5,380 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hélder Kiss King | Site Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap');
-        
         :root {
-            --neon-red: #ff073a;
-            --neon-blue: #0ff0fc;
-            --dark-bg: #0a0a0a;
+            --color-jet-black: #0a0a0a; 
+            --color-deep-red: #c00000; 
+            --color-silver-chrome: #bcc6cc; 
+            --color-neon-blue-accents: #0abdc6; 
+            --color-text-light: #f0f0f0;
+            --color-text-medium: #a0a0a0;
+            --neon-red: #ff073a; 
+            --neon-blue: #0ff0fc; 
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
+            background-color: var(--color-jet-black); 
+            color: var(--color-text-light); 
             overflow-x: hidden;
         }
         
         .hero {
-            background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            /* background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80'); */ /* Placeholder, to be updated */
+            /* Suggested new backgrounds: (using one for now, can be made dynamic or user-selectable later) */
+            background-image: url('https://images.unsplash.com/photo-1524230507669-3ff9ad023aa5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); /* Foggy cityscape example */
+            /* background-image: url('https://images.unsplash.com/photo-1561714042-5c4675e9de09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80'); */ /* Graffiti wall example */
+            /* background-image: url('https://images.unsplash.com/photo-1604707910643-38418188a9a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); */ /* Shadowed artist portrait example */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             height: 100vh;
             position: relative;
+            overflow: hidden; /* For VHS/Glitch effect containment if added via ::after */
         }
         
-        .hero::before {
+        .hero::before { /* Dark overlay */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6); /* Slightly less opacity to let image show more */
+            z-index: 1; /* Ensure overlay is above background but below content */
+        }
+
+        /* Optional: VHS/Glitch effect overlay - subtle */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255,255,255,0.03) 0px,
+                rgba(255,255,255,0.03) 1px,
+                transparent 1px,
+                transparent 4px
+            );
+            animation: vhs-glitch 1.5s steps(4, end) infinite;
+            z-index: 2; /* Above dark overlay, below content */
+            pointer-events: none; /* So it doesn't interfere with clicks */
+        }
+
+        @keyframes vhs-glitch {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-2px) translateX(1px); }
+            50% { transform: translateY(1px) translateX(-1px); }
+            75% { transform: translateY(-1px) translateX(2px); }
+            100% { transform: translateY(0); }
         }
         
         .artist-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-family: 'Bebas Neue', sans-serif; /* Keeping Bebas Neue as requested */
+            font-size: clamp(3.5rem, 12vw, 9rem); /* Slightly larger */
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+            /* Updated gradient: Deep Red to Silver Chrome with Neon Blue Accent */
+            background: linear-gradient(90deg, var(--color-deep-red) 0%, var(--color-silver-chrome) 70%, var(--color-neon-blue-accents) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 10px rgba(255, 7, 58, 0.3);
+            /* text-shadow: 0 0 10px var(--color-neon-blue-accents), 0 0 20px var(--color-deep-red); */
+            text-shadow: 
+                0 0 5px rgba(var(--color-neon-blue-accents), 0.5),
+                0 0 10px rgba(var(--color-neon-blue-accents), 0.4),
+                0 0 15px rgba(var(--color-deep-red), 0.3),
+                0 0 20px rgba(var(--color-deep-red), 0.2);
+            position: relative; /* Needed for z-index if text itself has glitch/animation */
+            z-index: 3; /* Ensure text is above overlays */
         }
         
-        .play-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border: 2px solid var(--neon-red);
-            box-shadow: 0 0 15px var(--neon-red);
+        .cta-listen-now { 
+            display: inline-block; 
+            padding: 0.9rem 3rem; /* Slightly larger padding */
+            border-radius: 50px; 
+            background: transparent; /* Make background transparent to rely on border/shadow for effect */
+            backdrop-filter: blur(5px); /* Keep blur for frosted glass */
+            transition: all 0.3s ease-out; /* Smoother transition */
+            border: 2px solid var(--color-neon-blue-accents);
+            /* Softer, more spread out neon glow */
+            box-shadow: 
+                0 0 8px var(--color-neon-blue-accents),
+                0 0 16px var(--color-neon-blue-accents),
+                inset 0 0 5px rgba(var(--color-neon-blue-accents),0.5);
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.15em; /* Slightly more spacing */
+            cursor: pointer;
+            position: relative; /* For z-index */
+            z-index: 3; /* Ensure CTA is above overlays */
         }
         
-        .play-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px var(--neon-red);
+        .cta-listen-now:hover {
+            transform: scale(1.08); /* Slightly more pronounced hover scale */
+            /* Enhanced glow on hover */
+            box-shadow: 
+                0 0 12px var(--color-neon-blue-accents),
+                0 0 24px var(--color-neon-blue-accents),
+                0 0 32px var(--color-deep-red), /* Add a hint of red to the hover glow */
+                inset 0 0 8px rgba(var(--color-neon-blue-accents),0.7);
+            background: rgba(var(--color-neon-blue-accents), 0.15); /* More noticeable background on hover */
+            border-color: var(--color-silver-chrome); /* Change border color on hover */
         }
         
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             letter-spacing: 0.2em;
             position: relative;
             display: inline-block;
+            color: var(--color-text-light); 
+            margin-bottom: 4rem; /* Increased margin */
+            text-align: center;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
+            bottom: -15px; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* Adjusted width */
             height: 3px;
-            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+            background: linear-gradient(90deg, var(--color-deep-red), var(--color-neon-blue-accents));
         }
         
         .album-cover {
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid transparent; /* Start transparent */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Added border-radius */
+            overflow: hidden; /* Ensures image respects radius */
         }
         
         .album-cover:hover {
             transform: scale(1.05);
-            border-color: var(--neon-red);
-            box-shadow: 0 0 20px var(--neon-red);
+            border-color: var(--color-deep-red);
+            box-shadow: 0 8px 25px rgba(var(--color-deep-red), 0.5);
         }
         
-        .bio-text {
-            position: relative;
+        .bio-text p { /* Target paragraphs directly for animation */
+            color: var(--color-text-medium); 
+            font-size: 1.1rem; /* Slightly larger for readability */
+            line-height: 1.7;
         }
-        
-        .bio-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent 90%, rgba(255, 255, 255, 0.1) 100%);
-            animation: glitch 2s infinite alternate;
-        }
-        
-        @keyframes glitch {
-            0% {
-                transform: translate(0);
-            }
-            20% {
-                transform: translate(-2px, 2px);
-            }
-            40% {
-                transform: translate(-2px, -2px);
-            }
-            60% {
-                transform: translate(2px, 2px);
-            }
-            80% {
-                transform: translate(2px, -2px);
-            }
-            100% {
-                transform: translate(0);
-            }
-        }
-        
+                
         .newsletter-bg {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(15, 15, 15, 0.7); /* Slightly adjusted */
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(var(--color-silver-chrome), 0.2);
+            border-radius: 8px; /* Added border-radius */
         }
         
         .input-field {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(var(--color-silver-chrome), 0.1);
             border: none;
-            border-bottom: 2px solid var(--neon-red);
-            color: white;
+            border-bottom: 2px solid var(--color-deep-red);
+            color: var(--color-text-light);
+            border-radius: 4px; /* Subtle radius */
         }
         
         .input-field:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(var(--color-silver-chrome), 0.2);
+            border-bottom-color: var(--color-neon-blue-accents);
+            box-shadow: 0 0 10px rgba(var(--color-neon-blue-accents), 0.5); /* Glow on focus */
         }
         
         .submit-btn {
-            background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+            background: linear-gradient(90deg, var(--color-deep-red), var(--color-neon-blue-accents));
             transition: all 0.3s ease;
+            color: var(--color-text-light);
+            border-radius: 4px; /* Subtle radius */
         }
         
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 7, 58, 0.4);
+            box-shadow: 0 5px 15px rgba(192, 0, 0, 0.5); 
         }
         
         .social-icon {
             transition: all 0.3s ease;
-            color: white;
+            color: var(--color-text-medium);
+            font-size: 1.8rem; /* Slightly larger social icons */
         }
         
         .social-icon:hover {
-            color: var(--neon-red);
-            transform: translateY(-3px);
+            color: var(--color-neon-blue-accents); 
+            transform: translateY(-3px) scale(1.1); /* Added scale */
         }
-        
-        .tour-date {
-            border-left: 3px solid var(--neon-red);
-            transition: all 0.3s ease;
-        }
-        
-        .tour-date:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(5px);
-        }
-        
-        .concrete-bg {
-            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
-        }
-        
+                
         .footer {
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            background: linear-gradient(transparent, var(--color-jet-black) 70%); /* Adjusted gradient */
+            padding-top: 3rem; /* Added padding */
         }
         
         @media (max-width: 768px) {
             .hero {
                 background-attachment: scroll;
             }
+            .artist-name {
+                font-size: clamp(2.5rem, 12vw, 6rem); 
+            }
+            .cta-listen-now {
+                padding: 0.7rem 2rem;
+            }
+            .section-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+            }
+            .bio-text p {
+                font-size: 1rem;
+            }
+        }
+
+        .video-teaser-container {
+             border-radius: 8px; 
+             overflow: hidden; 
+             box-shadow: 0 10px 25px rgba(0,0,0,0.7); /* Enhanced shadow */
+             border: 2px solid var(--color-deep-red);
+        }
+        
+        .tour-date-item-background { 
+            background: rgba(20, 20, 20, 0.7); /* Darker glass */
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border-radius: 10px; 
+            border: 1px solid rgba(var(--color-silver-chrome), 0.25); 
+            padding: 1.75rem; 
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+        }
+
+        .tour-date-item-background:hover {
+            background: rgba(30, 30, 30, 0.8); 
+            box-shadow: 0 0 25px rgba(var(--color-neon-blue-accents), 0.5);
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        .animated-text {
+            opacity: 0;
+            transform: translateY(30px); /* Increased initial offset */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animated-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Base class for grainy texture */
+        .grainy-texture-section {
+            position: relative;
+            z-index: 0; /* Ensure content can stack above if needed */
+        }
+
+        .grainy-texture-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><filter id="n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity=".05"/></svg>'); /* Adjusted baseFrequency and opacity */
+            pointer-events: none; 
+            z-index: -1; /* Place grain behind content */
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Hero Section -->
-    <section class="hero flex items-center justify-center relative">
-        <div class="container mx-auto px-6 z-10 text-center">
-            <h1 class="artist-name mb-6">Hélder Kiss King</h1>
-            <p class="text-xl md:text-2xl mb-12 uppercase tracking-widest font-light">A voz das ruas</p>
-            <a href="#music" class="play-btn flex items-center justify-center mx-auto">
-                <i class="fas fa-play text-2xl text-white"></i>
+    <section class="hero flex items-center justify-center relative grainy-texture-section">
+        <div class="container mx-auto px-6 z-10 text-center"> 
+            <h1 class="artist-name mb-8 animated-text">Hélder Kiss King</h1>
+            <p class="text-xl md:text-2xl mb-10 uppercase tracking-widest font-light animated-text" style="animation-delay: 0.2s;">A voz das ruas</p>
+            <a href="#music" class="cta-listen-now animated-text" style="animation-delay: 0.4s;">
+                Listen Now
             </a>
-            <div class="absolute bottom-10 left-0 right-0 text-center">
-                <a href="#about" class="animate-bounce inline-block">
-                    <i class="fas fa-chevron-down text-2xl"></i>
+            <div class="absolute bottom-12 left-0 right-0 text-center">
+                <a href="#about" class="animate-bounce inline-block text-var(--color-text-medium) hover:text-var(--color-neon-blue-accents) transition-colors">
+                    <i class="fas fa-chevron-down text-3xl"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Latest Releases -->
-    <section id="music" class="py-20 px-6 concrete-bg">
+    <section id="music" class="py-24 px-6 grainy-texture-section"> 
         <div class="container mx-auto">
-            <h2 class="section-title mb-16">Últimos Lançamentos</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-                <div class="album-cover rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Album Cover" class="w-full h-auto">
-                    <div class="p-4 bg-black bg-opacity-70">
-                        <h3 class="text-xl font-bold">VARIATIONS</h3>
-                        <p class="text-gray-400">Mixtape • 2023</p>
+            <h2 class="section-title">Últimos Lançamentos</h2>
+            <!-- Main Release Spotlight -->
+            <div class="mb-20 flex flex-col lg:flex-row items-center gap-10 p-6 md:p-10 bg-black bg-opacity-30 rounded-xl border border-var(--color-silver-chrome)/20 shadow-2xl animated-text">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1024&q=80" alt="Main Album Cover" class="w-full h-auto rounded-lg shadow-xl aspect-square object-cover">
+                </div>
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <h3 class="text-4xl md:text-5xl font-bold font-family-bebas-neue tracking-wider" style="color: var(--color-text-light);">VARIATIONS</h3>
+                    <p class="text-xl md:text-2xl mb-6" style="color: var(--color-text-medium);">Mixtape • 2023</p>
+                    <p class="mb-8 text-lg leading-relaxed" style="color: var(--color-text-light);">
+                        A mais recente mixtape, "VARIATIONS", mergulha fundo nas complexidades da jornada urbana. Cada faixa é uma exploração sônica, misturando batidas pesadas com letras introspectivas.
+                    </p>
+                    <a href="#spotify-embed" 
+                       class="cta-listen-now py-3 px-8 text-lg" 
+                       onclick="document.getElementById('spotify-embed').scrollIntoView({ behavior: 'smooth' }); return false;">
+                       Ouvir Agora
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grid for other releases / older releases -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+                <div class="album-cover animated-text" style="animation-delay: 0.15s;">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Album Cover King's Ransom" class="w-full h-auto">
+                    <div class="p-5 bg-black bg-opacity-75">
+                        <h3 class="text-xl font-bold" style="color: var(--color-text-light);">KING'S RANSOM</h3>
+                        <p class="text-sm" style="color: var(--color-text-medium);">Single • 2023</p>
                     </div>
                 </div>
-                <div class="album-cover rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Album Cover" class="w-full h-auto">
-                    <div class="p-4 bg-black bg-opacity-70">
-                        <h3 class="text-xl font-bold">KING'S RANSOM</h3>
-                        <p class="text-gray-400">Single • 2023</p>
+                <div class="album-cover animated-text" style="animation-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Album Cover Street Poetry" class="w-full h-auto">
+                    <div class="p-5 bg-black bg-opacity-75">
+                        <h3 class="text-xl font-bold" style="color: var(--color-text-light);">STREET POETRY</h3>
+                        <p class="text-sm" style="color: var(--color-text-medium);">EP • 2022</p>
                     </div>
                 </div>
-                
-                <div class="album-cover rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Album Cover" class="w-full h-auto">
-                    <div class="p-4 bg-black bg-opacity-70">
-                        <h3 class="text-xl font-bold">STREET POETRY</h3>
-                        <p class="text-gray-400">EP • 2022</p>
-                    </div>
-                </div>
-                
-                <div class="album-cover rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Album Cover" class="w-full h-auto">
-                    <div class="p-4 bg-black bg-opacity-70">
-                        <h3 class="text-xl font-bold">CONCRETE DREAMS</h3>
-                        <p class="text-gray-400">Album • 2021</p>
+                <div class="album-cover animated-text" style="animation-delay: 0.45s;">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a3d1b432d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Album Cover Concrete Dreams" class="w-full h-auto"> <!-- Consider different image for variety -->
+                    <div class="p-5 bg-black bg-opacity-75">
+                        <h3 class="text-xl font-bold" style="color: var(--color-text-light);">CONCRETE DREAMS</h3>
+                        <p class="text-sm" style="color: var(--color-text-medium);">Album • 2021</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Spotify Embed -->
-            <div class="max-w-4xl mx-auto bg-black bg-opacity-50 p-6 rounded-lg">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0c3dWaaH70WtRncl6APt1x?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div id="spotify-embed" class="max-w-5xl mx-auto bg-black bg-opacity-60 p-6 rounded-xl border" style="border-color: rgba(var(--color-silver-chrome), 0.4);">
+                <iframe title="Spotify Embed Player" style="border-radius:12px;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <!-- Changed to a playlist embed for more variety, can be a specific album/track -->
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="section-title mb-16">Sobre</h2>
-            
-            <div class="bio-text mb-16">
-                <p class="text-lg leading-relaxed mb-6">
+    <section id="about" class="py-24 px-6 grainy-texture-section relative overflow-hidden">
+        <!-- Spotlight effect using pseudo-element -->
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(10, 189, 198, 0.15) 0%, transparent 50%); transform: scale(1.5); opacity: 0.5;"></div>
+        </div>
+        <div class="container mx-auto max-w-3xl text-center relative z-10"> <!-- z-10 to ensure content is above spotlight -->
+            <h2 class="section-title">Sobre Hélder Kiss King</h2>
+            <div class="bio-text space-y-8"> 
+                <p class="animated-text text-lg md:text-xl leading-relaxed" style="color: var(--color-text-light);">
                     Hélder Kiss King, nascido no coração da selva urbana, emergiu das ruas de concreto com uma voz que ecoa a verdade crua da vida na cidade. Suas letras pintam quadros vívidos de luta, triunfo e a busca incansável por sonhos contra todas as probabilidades.
                 </p>
-                <p class="text-lg leading-relaxed mb-6">
-                    Com influências que vão do hip-hop old school ao trap contemporâneo, o som de Hélder é uma fusão única que conecta gerações. Seu flow é afiado e melodicamente rico, entregando versos que cortam fundo enquanto mantêm apelo mainstream.
-                </p>
-                <p class="text-lg leading-relaxed">
-                    De batalhas underground a hits no topo das paradas, Hélder Kiss King consolidou seu lugar como uma das vozes mais autênticas do rap moderno. Sua música não apenas entretém - conta histórias, inspira movimentos e dá voz aos sem voz.
-                </p>
-            </div>
-            
-            <div class="flex justify-center space-x-8 mb-16">
-                <a href="#" class="social-icon text-2xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon text-2xl"><i class="fab fa-spotify"></i></a>
-                <a href="#" class="social-icon text-2xl"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="social-icon text-2xl"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon text-2xl"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="py-20 px-6 concrete-bg">
-        <div class="container mx-auto max-w-2xl">
-            <div class="newsletter-bg rounded-lg p-8 md:p-12">
-                <h2 class="text-3xl font-bold mb-6 text-center">Junte-se ao Movimento</h2>
-                <p class="text-center mb-8">Fique atualizado com lançamentos exclusivos, datas de turnê e conteúdo dos bastidores.</p>
-                
-                <form class="space-y-4">
-                    <div>
-                        <input type="email" placeholder="Your Email" class="input-field w-full px-4 py-3 rounded">
-                    </div>
-                    <button type="submit" class="submit-btn w-full py-3 rounded font-bold uppercase">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tour Dates -->
-    <section class="py-20 px-6">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="section-title mb-16">Datas de Tour</h2>
-            
-            <div class="space-y-4">
-                <div class="tour-date p-4 pl-6">
-                    <div class="flex flex-col md:flex-row md:justify-between">
-                        <div>
-                            <h3 class="font-bold text-xl">Lisbon Nights</h3>
-                            <p class="text-gray-400">Coliseu dos Recreios</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <p>June 15, 2023</p>
-                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tour-date p-4 pl-6">
-                    <div class="flex flex-col md:flex-row md:justify-between">
-                        <div>
-                            <h3 class="font-bold text-xl">Porto Underground</h3>
-                            <p class="text-gray-400">Hard Club</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <p>July 3, 2023</p>
-                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tour-date p-4 pl-6">
-                    <div class="flex flex-col md:flex-row md:justify-between">
-                        <div>
-                            <h3 class="font-bold text-xl">Madrid Beats</h3>
-                            <p class="text-gray-400">Sala But</p>
-                        </div>
-                        <div class="mt-2 md:mt-0">
-                            <p>August 12, 2023</p>
-                            <a href="#" class="text-red-500 hover:text-red-400 font-bold">Tickets</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer py-12 px-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h2 class="artist-name text-4xl">Hélder Kiss King</h2>
-                    <p class="mt-2 text-gray-400">© 2023 Todos os direitos reservados</p>
-                </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-lg">Para reservas e informações:</p>
-                    <a href="mailto:management@helderkissking.com" class="text-red-500 hover:text-red-400">management@helderkissking.com</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Simple animation for hero section
-        window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const scrollPosition = window.scrollY;
-            
-            if (scrollPosition < hero.offsetHeight) {
-                hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-            }
-        });
-        
-        // Glitch effect for bio text
-        const bioText = document.querySelector('.bio-text');
-        
-        setInterval(() => {
-            bioText.style.textShadow = `0 0 ${Math.random() * 5}px rgba(255, 7, 58, ${Math.random() * 0.5})`;
-        }, 100);
-    </script>
-</body>
-</html>
+                <p class="animated-text text-lg md:text-xl leading-relaxed" style="animation-delay: 0.25s; color: var(--color-text-light);">
+                    Com influências que vão do hip-hop old school ao tra
