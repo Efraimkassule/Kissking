@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hélder Kiss King | Site Oficial</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts: Bebas Neue and Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- YouTube Subscribe Button API -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <style>
+        /* Custom CSS Variables */
         :root {
             --color-jet-black: #0a0a0a; 
             --color-deep-red: #c00000; 
@@ -21,18 +29,20 @@
             --neon-blue: #0ff0fc; 
         }
         
+        /* Base Body Styles */
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--color-jet-black); 
             color: var(--color-text-light); 
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         
+        /* Hero Section Styles */
         .hero {
             background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Parallax effect */
             height: 100vh;
             position: relative;
             overflow: hidden;
@@ -46,7 +56,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6); 
-            z-index: 1; 
+            z-index: 1; /* Below content, above background */
         }
 
         .hero::after { /* VHS/Glitch effect overlay */
@@ -64,8 +74,8 @@
                 transparent 4px
             );
             animation: vhs-glitch 1.5s steps(4, end) infinite;
-            z-index: 2; 
-            pointer-events: none; 
+            z-index: 2; /* Below content, above dark overlay */
+            pointer-events: none; /* Allow clicks to pass through */
         }
 
         @keyframes vhs-glitch {
@@ -76,6 +86,7 @@
             100% { transform: translateY(0); }
         }
         
+        /* Artist Name Styling */
         .artist-name {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3.5rem, 12vw, 9rem); 
@@ -91,10 +102,11 @@
                 0 0 15px rgba(var(--color-deep-red), 0.3),
                 0 0 20px rgba(var(--color-deep-red), 0.2);
             position: relative; 
-            z-index: 3; 
+            z-index: 3; /* Ensure text is on top */
         }
         
-        .cta-listen-now { 
+        /* Call to Action Button Styles */
+        .cta-button { /* Renamed from cta-listen-now for general use */
             display: inline-block; 
             padding: 0.9rem 3rem; 
             border-radius: 50px; 
@@ -112,10 +124,10 @@
             letter-spacing: 0.15em; 
             cursor: pointer;
             position: relative; 
-            z-index: 3; 
+            z-index: 3; /* Ensure buttons are on top */
         }
         
-        .cta-listen-now:hover {
+        .cta-button:hover {
             transform: scale(1.08); 
             box-shadow: 
                 0 0 12px var(--color-neon-blue-accents),
@@ -125,7 +137,8 @@
             background: rgba(var(--color-neon-blue-accents), 0.15); 
             border-color: var(--color-silver-chrome); 
         }
-        
+
+        /* Section Title Styles */
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -135,6 +148,7 @@
             color: var(--color-text-light); 
             margin-bottom: 4rem; 
             text-align: center;
+            text-transform: uppercase;
         }
         
         .section-title::after {
@@ -143,11 +157,13 @@
             bottom: -15px; 
             left: 50%;
             transform: translateX(-50%);
-            width: 80%; 
+            width: 80%; /* Adjusted for better responsiveness */
+            max-width: 300px; /* Max width for the underline */
             height: 3px;
             background: linear-gradient(90deg, var(--color-deep-red), var(--color-neon-blue-accents));
         }
         
+        /* Album Cover Styles */
         .album-cover {
             transition: all 0.3s ease;
             border: 2px solid transparent; 
@@ -162,12 +178,14 @@
             box-shadow: 0 8px 25px rgba(var(--color-deep-red), 0.5);
         }
         
+        /* Biography Text Styles */
         .bio-text p { 
-            color: var(--color-text-medium); 
+            color: var(--color-text-medium); /* Changed to medium for better contrast */
             font-size: 1.1rem; 
             line-height: 1.7;
         }
                 
+        /* Newsletter Section Styles */
         .newsletter-bg {
             background: rgba(15, 15, 15, 0.7); 
             backdrop-filter: blur(10px);
@@ -208,6 +226,7 @@
             box-shadow: 0 5px 15px rgba(192, 0, 0, 0.5); 
         }
         
+        /* Social Icon Styles */
         .social-icon {
             transition: all 0.3s ease;
             color: var(--color-text-medium);
@@ -219,19 +238,21 @@
             transform: translateY(-3px) scale(1.1); 
         }
                 
+        /* Footer Styles */
         .footer {
             background: linear-gradient(transparent, var(--color-jet-black) 70%); 
             padding-top: 3rem; 
         }
         
+        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             .hero {
-                background-attachment: scroll;
+                background-attachment: scroll; /* Disable parallax on mobile for performance */
             }
             .artist-name {
                 font-size: clamp(2.5rem, 12vw, 6rem); 
             }
-            .cta-listen-now {
+            .cta-button { /* Apply to both buttons */
                 padding: 0.7rem 2rem;
             }
             .section-title {
@@ -242,6 +263,7 @@
             }
         }
 
+        /* Video Teaser Container Styles */
         .video-teaser-container {
              border-radius: 8px; 
              overflow: hidden; 
@@ -249,6 +271,7 @@
              border: 2px solid var(--color-deep-red);
         }
         
+        /* Tour Date Item Background (if re-added later) */
         .tour-date-item-background { 
             background: rgba(20, 20, 20, 0.7); 
             backdrop-filter: blur(12px); 
@@ -265,10 +288,12 @@
             transform: translateY(-5px); 
         }
 
+        /* Animated Text Styles */
         .animated-text {
             opacity: 0;
             transform: translateY(30px); 
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            animation-fill-mode: forwards; /* Keep the final state of the animation */
         }
 
         .animated-text.visible {
@@ -276,6 +301,7 @@
             transform: translateY(0);
         }
         
+        /* Grainy Texture Section Styles */
         .grainy-texture-section {
             position: relative;
             z-index: 0; 
@@ -288,6 +314,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* SVG for grain effect */
             background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><filter id="n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity=".05"/></svg>');
             pointer-events: none; 
             z-index: -1; 
@@ -296,13 +323,16 @@
         /* Styles for the music videos section */
         .music-videos-grid {
             display: grid;
-            /* These classes are applied to the container holding the video items */
-            grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+            gap: 1rem;
+            max-width: 5xl; /* Tailwind max-w-5xl */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
             height: 0;
             overflow: hidden;
             background: black; /* Fallback background */
@@ -318,18 +348,33 @@
             height: 100%;
             border: none; /* Remove default iframe border */
         }
+
+        /* Custom font family for Bebas Neue directly in Tailwind classes */
+        .font-bebas-neue {
+            font-family: 'Bebas Neue', sans-serif;
+        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Hero Section -->
     <section class="hero flex items-center justify-center relative grainy-texture-section">
-        <div class="container mx-auto px-6 z-10 text-center"> 
+        <div class="container mx-auto px-6 z-30 text-center"> <!-- Increased z-index to be above overlays -->
             <h1 class="artist-name mb-8 animated-text">Hélder Kiss King</h1>
             <p class="text-xl md:text-2xl mb-10 uppercase tracking-widest font-light animated-text" style="animation-delay: 0.2s;">A voz das ruas</p>
-            <a href="#music" class="cta-listen-now animated-text" style="animation-delay: 0.4s;">
-                Listen Now
-            </a>
-            <div class="absolute bottom-12 left-0 right-0 text-center">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="#music" class="cta-button animated-text" style="animation-delay: 0.4s;">
+                    Ouvir Agora
+                </a>
+                <!-- YouTube Subscribe Button in Hero Section -->
+                <a href="https://youtube.com/@helderkisskingoficial?si=jSrUXIoIn6ghywd7&sub_confirmation=1" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="cta-button animated-text" 
+                   style="animation-delay: 0.6s; background-color: var(--color-deep-red); border-color: var(--color-deep-red); box-shadow: 0 0 8px var(--color-deep-red), 0 0 16px var(--color-deep-red), inset 0 0 5px rgba(var(--color-deep-red),0.5);">
+                    Inscreva-se no YouTube
+                </a>
+            </div>
+            <div class="absolute bottom-12 left-0 right-0 text-center z-30"> <!-- Ensure scroll arrow is on top -->
                 <a href="#about" class="animate-bounce inline-block text-var(--color-text-medium) hover:text-var(--color-neon-blue-accents) transition-colors">
                     <i class="fas fa-chevron-down text-3xl"></i>
                 </a>
@@ -340,20 +385,20 @@
     <!-- Latest Releases -->
     <section id="music" class="py-24 px-6 grainy-texture-section"> 
         <div class="container mx-auto">
-            <h2 class="section-title">Últimos Lançamentos</h2>
+            <h2 class="section-title text-center mx-auto">Últimos Lançamentos</h2>
             <!-- Main Release Spotlight -->
             <div class="mb-20 flex flex-col lg:flex-row items-center gap-10 p-6 md:p-10 bg-black bg-opacity-30 rounded-xl border border-var(--color-silver-chrome)/20 shadow-2xl animated-text" id="variations-album">
                 <div class="lg:w-1/2 cursor-pointer">
                     <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1024&q=80" alt="Main Album Cover" class="w-full h-auto rounded-lg shadow-xl aspect-square object-cover">
                 </div>
                 <div class="lg:w-1/2 text-center lg:text-left">
-                    <h3 class="text-4xl md:text-5xl font-bold font-family-bebas-neue tracking-wider" style="color: var(--color-text-light);">VARIATIONS</h3>
+                    <h3 class="text-4xl md:text-5xl font-bold font-bebas-neue tracking-wider" style="color: var(--color-text-light);">VARIATIONS</h3>
                     <p class="text-xl md:text-2xl mb-6" style="color: var(--color-text-medium);">Mixtape • 2023</p>
                     <p class="mb-8 text-lg leading-relaxed" style="color: var(--color-text-light);">
                         A mais recente mixtape, "VARIATIONS", mergulha fundo nas complexidades da jornada urbana. Cada faixa é uma exploração sônica, misturando batidas pesadas com letras introspectivas.
                     </p>
                     <a href="#spotify-embed" 
-                       class="cta-listen-now py-3 px-8 text-lg" 
+                       class="cta-button py-3 px-8 text-lg" 
                        onclick="document.getElementById('spotify-embed').scrollIntoView({ behavior: 'smooth' }); return false;">
                        Ouvir Agora
                     </a>
@@ -367,62 +412,87 @@
 
             <!-- Music Videos Section - Initially hidden -->
             <div id="music-videos" class="mt-16 hidden"> 
-                <h2 class="section-title mb-10">VARIATIONS - Music Videos</h2>
+                <h2 class="section-title mb-10 text-center mx-auto">VARIATIONS - Music Videos</h2>
                 <!-- Grid container applying styles similar to the photo gallery -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto animated-text" style="animation-delay: 0.3s;">
+                <div class="music-videos-grid animated-text" style="animation-delay: 0.3s;">
                     <!-- Grid Item Wrapper for each video -->
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <!-- The video-container div handles the 16:9 aspect ratio and iframe -->
                         <div class="video-container"> 
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_1 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_2 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/o0QyF_oV18s?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_3 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/2Vv-BfWCldc?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_4 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_5 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/kYtJgXQJCYU?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_6 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_7 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_8 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/y6Sxv-sUYtM?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_9?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_9 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/fJ9rUzIMcZQ?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-110">
+                    <div class="rounded-lg overflow-hidden border-2 border-var(--color-silver-chrome)/30 hover:border-var(--color-neon-blue-accents) transition-all duration-300 transform hover:scale-105">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_10?si=example_session_id" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- Replace VIDEO_ID_10 with actual YouTube video ID -->
+                            <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" title="YouTube video player 10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Channel Section (New) -->
+    <section id="youtube-channel" class="py-24 px-6 grainy-texture-section bg-var(--color-jet-black) relative overflow-hidden">
+        <div class="container mx-auto max-w-2xl text-center relative z-10">
+            <h2 class="section-title text-center mx-auto">Conecte-se no YouTube</h2>
+            <p class="text-lg mb-10" style="color: var(--color-text-medium);">
+                Não perca nenhum lançamento! Inscreva-se no meu canal oficial para os últimos videoclipes, bastidores e muito mais.
+            </p>
+            <div class="flex justify-center animated-text" style="animation-delay: 0.2s;">
+                <!-- Official YouTube Subscribe Button Widget -->
+                <!-- Using data-channel with the custom URL handle -->
+                <div class="g-ytsubscribe" data-channel="helderkisskingoficial" data-layout="full" data-count="default"></div>
             </div>
         </div>
     </section>
@@ -432,22 +502,23 @@
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(10, 189, 198, 0.15) 0%, transparent 50%); transform: scale(1.5); opacity: 0.5;"></div>
         </div>
         <div class="container mx-auto max-w-3xl text-center relative z-10"> 
-            <h2 class="section-title">Sobre Hélder Kiss King</h2>
+            <h2 class="section-title text-center mx-auto">Sobre Hélder Kiss King</h2>
             <div class="bio-text space-y-8"> 
-                <p class="animated-text text-lg md:text-xl leading-relaxed" style="color: var(--color-text-light);">
+                <p class="animated-text text-lg md:text-xl leading-relaxed" style="color: var(--color-text-medium);">
                     Hélder Kiss King, nascido no coração da selva urbana, emergiu das ruas de concreto com uma voz que ecoa a verdade crua da vida na cidade. Suas letras pintam quadros vívidos de luta, triunfo e a busca incansável por sonhos contra todas as probabilidades.
                 </p>
-                <p class="animated-text text-lg md:text-xl leading-relaxed" style="animation-delay: 0.25s; color: var(--color-text-light);">
+                <p class="animated-text text-lg md:text-xl leading-relaxed" style="animation-delay: 0.25s; color: var(--color-text-medium);">
                     Com influências que vão do hip-hop old school ao trap contemporâneo, o som de Hélder é uma fusão única que conecta gerações. Seu flow é afiado e melodicamente rico, entregando versos que cortam fundo enquanto mantêm apelo mainstream.
                 </p>
-                <p class="animated-text text-lg md:text-xl leading-relaxed" style="animation-delay: 0.5s; color: var(--color-text-light);">
+                <p class="animated-text text-lg md:text-xl leading-relaxed" style="animation-delay: 0.5s; color: var(--color-text-medium);">
                     De batalhas underground a hits no topo das paradas, Hélder Kiss King consolidou seu lugar como uma das vozes mais autênticas do rap moderno. Sua música não apenas entretém - conta histórias, inspira movimentos e dá voz aos sem voz.
                 </p>
             </div>
             <div class="flex justify-center space-x-5 mt-12">
                 <a href="https://www.tiktok.com/@helder_kiss_king?_t=ZM-8xrZt5nPEer&_r=1" target="_blank" aria-label="TikTok" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 <a href="https://www.instagram.com/tv/DGxxeB_BEGh/?igsh=dzBlNTQzenViYm1m" target="_blank" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@helderkisskingoficial?si=7a1MPXwR-Iq5UxtY" target="_blank" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <!-- Updated YouTube link with subscribe confirmation -->
+                <a href="https://youtube.com/@helderkisskingoficial?si=jSrUXIoIn6ghywd7&sub_confirmation=1" target="_blank" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.facebook.com/share/155XYwUALmQ/" target="_blank" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="Spotify" class="social-icon"><i class="fab fa-spotify"></i></a>
             </div>
@@ -458,15 +529,15 @@
         <div class="absolute inset-0 z-0 opacity-20" style="background: linear-gradient(-45deg, var(--color-deep-red), var(--color-neon-blue-accents), var(--color-jet-black), var(--color-silver-chrome)); background-size: 400% 400%; animation: gradientBG 25s ease infinite;"></div>
         <style>
             @keyframes gradientBG {
-                0% {background-position: 0% 50%;}
+                0% {background-position: 0% 50;}
                 50% {background-position: 100% 50%;}
-                100% {background-position: 0% 50%;}
+                100% {background-position: 0% 50;}
             }
         </style>
         <div class="container mx-auto relative z-10"> 
-            <h2 class="section-title">Visuais</h2>
+            <h2 class="section-title text-center mx-auto">Visuais</h2>
             <div class="video-teaser-container max-w-4xl mx-auto animated-text shadow-2xl">
-                <div class="aspect-w-16 aspect-h-9 bg-black">
+                <div class="video-container"> <!-- Using custom video-container for aspect ratio -->
                      <iframe 
                         src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&modestbranding=1&rel=0&showinfo=0&controls=1" 
                         title="Music Video Teaser" 
@@ -496,22 +567,7 @@
         </div>
     </section>
     
-    <!-- Removed Tour Section -->
-
-    <section class="py-24 px-6 grainy-texture-section"> 
-        <div class="container mx-auto max-w-2xl">
-            <div class="newsletter-bg p-10 md:p-12 shadow-2xl relative z-10 animated-text"> 
-                <h2 class="text-4xl font-bold mb-6 text-center" style="color: var(--color-text-light);">Junte-se ao Movimento</h2>
-                <p class="text-center mb-10 text-lg" style="color: var(--color-text-medium);">Fique atualizado com lançamentos exclusivos, datas de turnê e conteúdo dos bastidores.</p>
-                <form class="space-y-6">
-                    <div>
-                        <input type="email" placeholder="Seu Email" class="input-field w-full px-5 py-4 text-lg focus:ring-2" style="border-bottom-color: var(--color-deep-red); --tw-ring-color: var(--color-neon-blue-accents);">
-                    </div>
-                    <button type="submit" class="submit-btn w-full py-4 font-bold uppercase text-lg tracking-wider">Inscrever</button>
-                </form>
-            </div>
-        </div>
-    </section>
+    <!-- Removed "Junte-se ao Movimento" section as requested -->
 
     <footer class="footer py-20 px-6 grainy-texture-section">
         <div class="container mx-auto">
@@ -527,7 +583,8 @@
                 <div class="flex justify-center space-x-5">
                     <a href="https://www.tiktok.com/@helder_kiss_king?_t=ZM-8xrZt5nPEer&_r=1" target="_blank" aria-label="TikTok" class="social-icon"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.instagram.com/tv/DGxxeB_BEGh/?igsh=dzBlNTQzenViYm1m" target="_blank" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@helderkisskingoficial?si=7a1MPXwR-Iq5UxtY" target="_blank" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <!-- Updated YouTube link with subscribe confirmation -->
+                    <a href="https://youtube.com/@helderkisskingoficial?si=jSrUXIoIn6ghywd7&sub_confirmation=1" target="_blank" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.facebook.com/share/155XYwUALmQ/" target="_blank" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Spotify" class="social-icon"><i class="fab fa-spotify"></i></a>
                 </div>
@@ -556,6 +613,7 @@
             const hero = document.querySelector('.hero');
             if (!hero) return;
             const scrollPosition = window.scrollY;
+            // Only apply parallax if scroll position is within the hero section height
             if (scrollPosition < hero.offsetHeight) {
                 hero.style.backgroundPosition = `center ${scrollPosition * 0.25}px`; // Reduced parallax factor
             }
@@ -592,10 +650,12 @@
             variationsAlbumDiv.addEventListener('click', showMusicVideos);
         }
 
-        // Placeholder for actual YouTube video IDs
-        // Replace 'VIDEO_ID_X' with the actual IDs from YouTube.
-        // Example: The ID in 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' is 'dQw4w9WgXcQ'.
-        // You will need to find and insert 10 unique video IDs for the "VARIATIONS" mixtape.
+        // IMPORTANT: Replace 'VIDEO_ID_X' in the iframe src attributes with your actual YouTube IDs.
+        // Example YouTube Video IDs (replace with your actual video IDs):
+        // 'dQw4w9WgXcQ' (Rick Astley)
+        // 'o0QyF_oV18s' (Another example)
+        // '2Vv-BfWCldc' (Yet another example)
     </script>
 </body>
 </html>
+
